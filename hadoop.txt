@@ -1,0 +1,72 @@
+Hadoop是一个由Apache基金会所开发的分布式系统基础架构，本文主要和大家分享Hadoop相关Linux命令整理，希望能帮助到大家。
+vi内的一些常用快捷键
+未进入编辑模式
+光标快速到最后一行  shift+g
+光标快速到第一行 :0
+删除单个字符 x
+删除一行  dd
+复制一行 yy
+粘贴一行 p
+删除光标后一行 shift+d
+
+ssh localhost
+ssh登陆到本机
+su -l root
+带操作习惯
+
+vi /etc/selinux/config 	编辑selinux配置文件
+setenforce 0 	暂时关闭selinux
+/etc/init.d/iptables status 	查看防火墙
+/etc/init.d/iptables start 	启动防火墙
+/etc/init.d/iptables stop 	关闭防火墙
+/etc/init.d/iptables restart 	重启防火墙
+chkconfig iptables off 	开机禁用防火墙
+chkconfig iptables on 	开机启用防火墙
+vi /etc/ssh/sshd_config	编辑关闭selinux
+vim /etc/ssh/sshd_config 	编辑关闭selinux
+/etc/init.d/sshd restart 	重启ssh
+
+
+1.关闭selinux(国外的类似iptables)
+vi /etc/selinux/config
+setenforce 0 	暂时关闭selinux
+SELINUX=disabled 	在selinux配置文件内添加关闭
+2.关闭防火墙
+/etc/init.d/iptables stop 	关闭防火墙
+chkconfig iptables off 	开机禁用防火墙
+3.配置无密钥登陆
+ssh-keygen -t dsa 	生成密钥
+cat id_dsa.pub >> authorized_keys 	生成密钥后追加到authorized_keys
+scp -r  authorized_keys  root@192.168.70.136:~/.ssh 从本地远程复制密钥传到指定计算机
+4.ssh比较慢的时候
+vi /etc/ssh/sshd_config
+找到#UseDNS yes 修改为UseDNS no
+然后保存退出service sshd restart重启服务
+登陆延迟等待
+vim /etc/resolv.conf 清空内容
+5.
+df -l查看挂载的磁盘空间大小
+fdisk 查看整个服务器硬盘信息
+fdisk -l
+mount 硬盘挂载
+修改命令行登陆方式
+vi /etc/inittab
+id:3:initdefault:默认命令行登陆模式
+id:5:initdefault:默认窗口界面登陆模式
+← linux环境变量实例详解没有了 →
+相关阅读:
+linux环境变量实例详解
+LAMP安装实例分享
+在Windows系统中搭建php环境方法实例
+Apache文件如何解析漏洞实例分析
+apache和PHP整合实例分享
+Nginx与Apache实现动静结合实例分享
+Nginx和Apache区别详解
+Apache优化方法分享
+linux防火墙如何设置
+solr linux配置实例分享
+linux命令之cat简介
+linux命令之rm简单介绍
+linux中shell语法详解
+nginx配置文件方法实例
+Nginx使用图片处理模块的方法实例
