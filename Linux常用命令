@@ -85,5 +85,27 @@ top命令会默认按照CPU的占用情况，显示占用量较大的进程,可�
 29.shutdown
 shutdown用于关闭计算机，而shutdown -r用于重启计算机。
 
+将用户从组中移除
+gpasswd -d A GROUP
+
+
+将用户从组中移除
+usermod -G groupname username
+
+
+添加用户并且让用户获得root权限
+
+添加用户
+adduser username 
+passwd username
+
+删除用户
+userdel username  
+
+给与root权限
+修改 /etc/sudoers 文件，找到下面一行，在root下面添加一行
+root    ALL=(ALL)     ALL
+tommy   ALL=(ALL)     ALL
+
 
 
